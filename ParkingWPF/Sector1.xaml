@@ -1,0 +1,92 @@
+﻿<Window x:Class="ParkingWPF.Sector1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ParkingWPF"
+        mc:Ignorable="d"
+        Title="Sector1" Height="550" Width="550">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="8*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2.2*"></RowDefinition>
+                <RowDefinition Height="6.6*"></RowDefinition>
+                <RowDefinition Height="2.2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Name="btnPlace17"></Button>
+                <Button Grid.Row="1" Name="btnPlace16"></Button>
+                <Button Grid.Row="2" Name="btnPlace15"></Button>
+                <Button Grid.Row="3" Name="btnPlace14"></Button>
+                <Button Grid.Row="4" Name="btnPlace13"></Button>
+            </Grid>
+        </Grid>
+        
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Name="btnPlace1"></Button>
+                <Button Grid.Column="1" Name="btnPlace2"></Button>
+                <Button Grid.Column="2" Name="btnPlace3"></Button>
+                <Button Grid.Column="3" Name="btnPlace4"></Button>
+                <Button Grid.Column="4" Name="btnPlace5"></Button>
+                <Button Grid.Column="5" Name="btnPlace6"></Button>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="2" Name="btnPlace18"></Button>
+                <Button Grid.Column="3" Name="btnPlace19"></Button>
+                <Button Grid.Column="4" Name="btnPlace20"></Button>
+                <Button Grid.Column="5" Name="btnPlace21"></Button>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Name="btnPlace12"></Button>
+                <Button Grid.Column="1" Name="btnPlace11"></Button>
+                <Button Grid.Column="2" Name="btnPlace10"></Button>
+                <Button Grid.Column="3" Name="btnPlace9"></Button>
+                <Button Grid.Column="4" Name="btnPlace8"></Button>
+                <Button Grid.Column="5" Name="btnPlace7"></Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

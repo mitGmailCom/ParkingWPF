@@ -5,8 +5,176 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ParkingWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Parking" Height="350" Width="525" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"></RowDefinition>
+            <RowDefinition Height="8.8*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="6*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Menu Name="menu" HorizontalAlignment="Left" Margin="0,0,0,-62" VerticalAlignment="Top"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock TextAlignment="Center" Text="Введите фамилию клиента:"></TextBlock>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Button>
+                    <TextBlock Text="Поиск"/>
+                </Button>
+            </Grid>
+        </Grid>
         
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"></RowDefinition>
+                    <RowDefinition Height="3*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Button Name="btnSector1" Click="btnSector1_Click">
+                        <TextBlock Text="Сектор 1" FontSize="26"></TextBlock>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7.7*"></ColumnDefinition>
+                            <ColumnDefinition Width="2.3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Кол-во мест"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7.7*"></ColumnDefinition>
+                            <ColumnDefinition Width="2.3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Кол-во свободных мест"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7.7*"></ColumnDefinition>
+                            <ColumnDefinition Width="2.3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Кол-во занятых мест"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                    </Grid>
+                </Grid>
+            </Grid>
+            
+            
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"></RowDefinition>
+                    <RowDefinition Height="3*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Button Name="btnSector2">
+                        <TextBlock Text="Сектор 2" FontSize="26"></TextBlock>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7.7*"></ColumnDefinition>
+                            <ColumnDefinition Width="2.3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Кол-во мест"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7.7*"></ColumnDefinition>
+                            <ColumnDefinition Width="2.3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Кол-во свободных мест"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7.7*"></ColumnDefinition>
+                            <ColumnDefinition Width="2.3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Кол-во занятых мест"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                    </Grid>
+                </Grid>
+            </Grid>
+            
+            
+            <Grid Grid.Row="1" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"></RowDefinition>
+                    <RowDefinition Height="3*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Button Name="btnSector3">
+                        <TextBlock Text="Сектор 3" FontSize="26"></TextBlock>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7.7*"></ColumnDefinition>
+                            <ColumnDefinition Width="2.3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Кол-во мест"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7.7*"></ColumnDefinition>
+                            <ColumnDefinition Width="2.3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Кол-во свободных мест"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7.7*"></ColumnDefinition>
+                            <ColumnDefinition Width="2.3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Кол-во занятых мест"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
