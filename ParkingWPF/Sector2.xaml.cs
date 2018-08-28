@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace ParkingWPF
 {
     /// <summary>
-    /// Логика взаимодействия для Sector1.xaml
+    /// Логика взаимодействия для Sector2.xaml
     /// </summary>
-    public partial class Sector1 : Window
+    public partial class Sector2 : Window
     {
-        public Sector1()
+        public Sector2()
         {
             InitializeComponent();
-        }
-
-        private void btnPlace4_Click(object sender, RoutedEventArgs e)
-        {
-            ClickPlace clickPlace = new ClickPlace();
-            clickPlace.SenderPlace = Int32.Parse((sender as Button).Content.ToString());
-            clickPlace.Show();
         }
     }
 }

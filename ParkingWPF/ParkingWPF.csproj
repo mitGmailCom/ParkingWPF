@@ -64,9 +64,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClickPlace.xaml.cs">
+      <DependentUpon>ClickPlace.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sector1.xaml.cs">
       <DependentUpon>Sector1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sector2.xaml.cs">
+      <DependentUpon>Sector2.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ClickPlace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,6 +96,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Sector1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sector2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
