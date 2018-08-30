@@ -18,8 +18,21 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Name="btnSelectCar" Content="Select Client"></Button>
+            <Button Grid.Column="1" Name="btnSelectClient" Content="Select Client" Click="btnAddCar_Click"></Button>
+            <Button Grid.Column="2" Name="btnEditeCar" Content="EditeCar"></Button>
+            <Button Grid.Column="3" Name="btnEditeClient" Content="EditeClient"></Button>
+        </Grid>
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -27,7 +40,7 @@
             <TextBlock Grid.Column="0" Text="Place"/>
             <TextBox Grid.Column="1" Name="txbInfoPlace" IsEnabled="False"></TextBox>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -35,7 +48,7 @@
             <TextBlock Grid.Column="0" Text="ClientLastName"/>
             <TextBox Grid.Column="1" Name="txbInfoClientLastName" IsEnabled="False"></TextBox>
         </Grid>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -43,7 +56,7 @@
             <TextBlock Grid.Column="0" Text="ClientFirstName"/>
             <TextBox Grid.Column="1" Name="txbInfoClientFirstName" IsEnabled="False"></TextBox>
         </Grid>
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -51,7 +64,7 @@
             <TextBlock Grid.Column="0" Text="Phone"/>
             <TextBox Grid.Column="1" Name="txbInfoPhone" IsEnabled="False"></TextBox>
         </Grid>
-        <Grid Grid.Row="4">
+        <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -59,7 +72,7 @@
             <TextBlock Grid.Column="0" Text="Manufacture"/>
             <TextBox Grid.Column="1" Name="txbInfoManufacture" IsEnabled="False"></TextBox>
         </Grid>
-        <Grid Grid.Row="5">
+        <Grid Grid.Row="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -67,7 +80,7 @@
             <TextBlock Grid.Column="0" Text="Model"/>
             <TextBox Grid.Column="1" Name="txbInfoModel" IsEnabled="False"></TextBox>
         </Grid>
-        <Grid Grid.Row="6">
+        <Grid Grid.Row="7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -75,7 +88,7 @@
             <TextBlock Grid.Column="0" Text="Color"/>
             <TextBox Grid.Column="1" Name="txbInfoColor" IsEnabled="False"></TextBox>
         </Grid>
-        <Grid Grid.Row="7">
+        <Grid Grid.Row="8">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -83,7 +96,7 @@
             <TextBlock Grid.Column="0" Text="Number"/>
             <TextBox Grid.Column="1" Name="txbInfoNumber" IsEnabled="False"></TextBox>
         </Grid>
-        <Grid Grid.Row="8">
+        <Grid Grid.Row="9">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -91,15 +104,17 @@
             <TextBlock Grid.Column="0" Text="Date"/>
             <TextBox Grid.Column="1" Name="txbInfoDate" IsEnabled="False"></TextBox>
         </Grid>
-        <Grid Grid.Row="9">
+        <Grid Grid.Row="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Name="btnGoAway"></Button>
-            <Button Grid.Column="1" Name="btnAddCar"></Button>
-            <Button Grid.Column="2" Name="btnEditeInfo"></Button>
+            <Button Grid.Column="3" Name="btnSaveToPlace" Content="Set to Place"></Button>
+            <Button Grid.Column="1" Name="btnAddCar" Content="Add Car" Click="btnAddCar_Click"></Button>
+            <Button Grid.Column="2" Name="btnAddClient" Content="Add Client"></Button>
+            <Button Grid.Column="0" Name="btnMoveFromPlace" Content="Move from place"></Button>
         </Grid>
     </Grid>
 </Window>

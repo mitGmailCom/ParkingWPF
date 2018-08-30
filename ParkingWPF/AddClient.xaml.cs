@@ -23,5 +23,10 @@ namespace ParkingWPF
         {
             InitializeComponent();
         }
+
+        private void btnCancelAddingClient_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

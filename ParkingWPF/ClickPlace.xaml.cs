@@ -26,28 +26,155 @@ namespace ParkingWPF
             InitializeComponent();
             Loaded += ClickPlace_Loaded;
         }
+        public string PlaceInClickPlace
+        {
+            get
+            {
+                return this.txbInfoPlace.Text;
+            }
+            set
+            {
+                txbInfoPlace.Text = value;
+            }
+        }
+        public string LastNameInClickPlace
+        {
+            get
+            {
+                return this.txbInfoClientLastName.Text;
+            }
+            set
+            {
+                txbInfoClientLastName.Text = value;
+            }
+        }
+        public string FirstNameInClickPlace
+        {
+            get
+            {
+                return this.txbInfoClientFirstName.Text;
+            }
+            set
+            {
+                txbInfoClientFirstName.Text = value;
+            }
+        }
+        public string PhoneInClickPlace
+        {
+            get
+            {
+                return this.txbInfoPhone.Text;
+            }
+            set
+            {
+                txbInfoPhone.Text = value;
+            }
+        }
+        public string ManufactureInClickPlace
+        {
+            get
+            {
+                return this.txbInfoManufacture.Text;
+            }
+            set
+            {
+                txbInfoManufacture.Text = value;
+            }
+        }
+        public string ModelInClickPlace
+        {
+            get
+            {
+                return this.txbInfoModel.Text;
+            }
+            set
+            {
+                txbInfoModel.Text = value;
+            }
+        }
+        public string ColorCarInClickPlace
+        {
+            get
+            {
+                return this.txbInfoColor.Text;
+            }
+            set
+            {
+                txbInfoColor.Text = value;
+            }
+        }
+        public string NumberCarInClickPlace
+        {
+            get
+            {
+                return this.txbInfoNumber.Text;
+            }
+            set
+            {
+                txbInfoNumber.Text = value;
+            }
+        }
+        public string DateAddInClickPlace
+        {
+            get
+            {
+                return this.txbInfoDate.Text;
+            }
+            set
+            {
+                txbInfoDate.Text = value;
+            }
+        }
+
 
         private void ClearValuesInBtn()
         {
             btnAddCar.IsEnabled = false;
-            btnEditeInfo.IsEnabled = false;
-            btnGoAway.IsEnabled = false;
+            btnAddClient.IsEnabled = false;
+            btnEditeCar.IsEnabled = false;
+            btnEditeClient.IsEnabled = false;
+            btnMoveFromPlace.IsEnabled = false;
+            btnSelectCar.IsEnabled = false;
+            btnSelectClient.IsEnabled = false;
+            btnSaveToPlace.IsEnabled = false;
         }
 
         private void CaseCheckedCar()
         {
             btnAddCar.IsEnabled = false;
-            btnEditeInfo.IsEnabled = true;
-            btnGoAway.IsEnabled = true;
+            btnAddClient.IsEnabled = false;
+            btnEditeCar.IsEnabled = false;
+            btnEditeClient.IsEnabled = false;
+            btnMoveFromPlace.IsEnabled = true;
+            btnSelectCar.IsEnabled = false;
+            btnSelectClient.IsEnabled = false;
+            btnSaveToPlace.IsEnabled = false;
         }
 
         private void CaseNotCheckedCar()
         {
             btnAddCar.IsEnabled = true;
-            btnEditeInfo.IsEnabled = false;
-            btnGoAway.IsEnabled = false;
+            btnAddClient.IsEnabled = true;
+            btnEditeCar.IsEnabled = false;
+            btnEditeClient.IsEnabled = false;
+            btnMoveFromPlace.IsEnabled = true;
+            btnSelectCar.IsEnabled = true;
+            btnSelectClient.IsEnabled = true;
+            btnSaveToPlace.IsEnabled = false;
         }
 
+        //public struct InfoPlace
+        //{
+        //    public int place;
+        //    string lastName;
+        //    string firstName;
+        //    int phone;
+        //    string manufacture;
+        //    string madel;
+        //    string color;
+        //    int number;
+        //    DateTime dateAdding;
+        //}
 
         private void ClickPlace_Loaded(object sender, RoutedEventArgs e)
         {
@@ -89,6 +216,41 @@ namespace ParkingWPF
                     }
                 }
             }
+        }
+
+        public bool CheckAllFieldsClickPlace()
+        {
+            bool res = false;
+            if (txbInfoPlace.Text == null || txbInfoPlace.Text == string.Empty)
+                res = false;
+            if (txbInfoClientFirstName.Text == null || txbInfoClientFirstName.Text == string.Empty)
+                res = false;
+            if (txbInfoClientLastName.Text == null || txbInfoClientLastName.Text == string.Empty)
+                res = false;
+            if (txbInfoPhone.Text == null || txbInfoPhone.Text == string.Empty)
+                res = false;
+            if (txbInfoManufacture.Text == null || txbInfoManufacture.Text == string.Empty)
+                res = false;
+            if (txbInfoModel.Text == null || txbInfoModel.Text == string.Empty)
+                res = false;
+            if (txbInfoColor.Text == null || txbInfoColor.Text == string.Empty)
+                res = false;
+            if (txbInfoNumber.Text == null || txbInfoNumber.Text == string.Empty)
+                res = false;
+            if (txbInfoDate.Text == null || txbInfoDate.Text == string.Empty)
+                res = false;
+            else
+                res = true;
+
+            return res;
+        }
+
+        private void btnAddCar_Click(object sender, RoutedEventArgs e)
+        {
+            AddCar AddCar = new AddCar();
+            AddCar.Owner = this;
+            AddCar.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            AddCar.ShowDialog();
         }
     }
 }
