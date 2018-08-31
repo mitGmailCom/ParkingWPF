@@ -27,8 +27,10 @@ namespace ParkingWPF
         private void btnPlace4_Click(object sender, RoutedEventArgs e)
         {
             ClickPlace clickPlace = new ClickPlace();
+            clickPlace.Owner = this;
+            clickPlace.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             clickPlace.SenderPlace = Int32.Parse((sender as Button).Content.ToString());
-            clickPlace.Show();
+            clickPlace.ShowDialog();
         }
     }
 }

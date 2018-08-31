@@ -51,30 +51,30 @@ namespace ParkingWPF
         }
 
 
-        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
-        {
-            if (depObj != null)
-            {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-                {
-                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-                    if (child != null && child is T)
-                    {
-                        yield return (T)child;
-                    }
+        //public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        //{
+        //    if (depObj != null)
+        //    {
+        //        for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+        //        {
+        //            DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+        //            if (child != null && child is T)
+        //            {
+        //                yield return (T)child;
+        //            }
 
-                    foreach (T childOfChild in FindVisualChildren<T>(child))
-                    {
-                        yield return childOfChild;
-                    }
-                }
-            }
-        }
+        //            foreach (T childOfChild in FindVisualChildren<T>(child))
+        //            {
+        //                yield return childOfChild;
+        //            }
+        //        }
+        //    }
+        //}
 
 
         private void SetFocusToTextBox()
         {
-            var list = FindVisualChildren<TextBox>(this);
+            var list = FindElementByType.FindVisualChildren<TextBox>(this);
             foreach (TextBox item in list)
             {
                 if (item.Text == null || item.Text == string.Empty)
@@ -87,44 +87,45 @@ namespace ParkingWPF
         }
 
 
-        internal bool CheckFields()
-        {
-            bool result = false;
-            var list = FindVisualChildren<TextBox>(this);
-            int tempNumberCar = 0;
-            DateTime tempDate;
-            foreach (TextBox item in list)
-            {
-                var res = ListOfIntType.Where(e => e == item.Name).FirstOrDefault();
-                if (res != null)
-                {
-                    bool isNumber = Int32.TryParse(res, out tempNumberCar);
-                    if (isNumber)
-                        result = true;
-                    else
-                    {
-                        result = false;
-                        break;
-                    }
-                }
-                res = ListOfDateType.Where(e => e == item.Name).FirstOrDefault();
-                if (res != null)
-                {
-                    bool isDate = DateTime.TryParse(res, out tempDate);
-                    if (isDate)
-                        result = true;
-                    else
-                    {
-                        result = false;
-                        break;
-                    }
-                }
-                res = ListOfStringType.Where(e => e == item.Name).FirstOrDefault();
-                if (res != null)
-                    result = true;
-            }
-            return result;
-        }
+        //internal bool CheckFieldsByType()
+        //{
+        //    bool result = false;
+        //    var list = FindElementByType.FindVisualChildren<TextBox>(this);
+        //    int tempNumberCar = 0;
+        //    DateTime tempDate;
+        //    foreach (TextBox item in list)
+        //    {
+        //        var res = ListOfIntType.Where(e => e == item.Name).FirstOrDefault();
+        //        if (res != null)
+        //        {
+        //            bool isNumber = Int32.TryParse(res, out tempNumberCar);
+        //            if (isNumber)
+        //                result = true;
+        //            else
+        //            {
+        //                result = false;
+        //                break;
+        //            }
+        //        }
+        //        res = ListOfDateType.Where(e => e == item.Name).FirstOrDefault();
+        //        if (res != null)
+        //        {
+        //            bool isDate = DateTime.TryParse(res, out tempDate);
+        //            if (isDate)
+        //                result = true;
+        //            else
+        //            {
+        //                result = false;
+        //                break;
+        //            }
+        //        }
+        //        res = ListOfStringType.Where(e => e == item.Name).FirstOrDefault();
+        //        if (res != null)
+        //            result = true;
+        //    }
+        //    return result;
+        //}
+
 
 
         private void btnCancelAddingCar_Click(object sender, RoutedEventArgs e)
@@ -133,6 +134,11 @@ namespace ParkingWPF
         }
 
 
+        /// <summary>
+        /// Add object Car to Datebase
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddCar_Click(object sender, RoutedEventArgs e)
         {
             if (txbAddManufacture.Text == null || txbAddModel.Text == null || txbAddColorCar.Text == null || txbAddNumberCar == null ||
@@ -140,23 +146,23 @@ namespace ParkingWPF
             {
                 MessageBox.Show("Please input values into all fields!", "Error");
                 SetFocusToTextBox();
-                CheckFields();
+                //CheckFieldsByType();
+                CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this);
             }
             else
             {
                 SetFocusToTextBox();
-                if (CheckFields())
+                if (CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this))//(CheckFieldsByType())
                 {
                     AddCarToDB();
-                    (this.Owner as ClickPlace).ManufactureInClickPlace = this.txbAddManufacture.Text;
-                    (this.Owner as ClickPlace).ModelInClickPlace = this.txbAddModel.Text;
-                    (this.Owner as ClickPlace).ColorCarInClickPlace = this.txbAddColorCar.Text;
-                    (this.Owner as ClickPlace).NumberCarInClickPlace = this.txbAddNumberCar.Text;
+                    (this.Owner as ClickPlace).txbInfoManufacture.Text = this.txbAddManufacture.Text;
+                    (this.Owner as ClickPlace).txbInfoModel.Text = this.txbAddModel.Text;
+                    (this.Owner as ClickPlace).txbInfoColor.Text = this.txbAddColorCar.Text;
+                    (this.Owner as ClickPlace).txbInfoNumber.Text = this.txbAddNumberCar.Text;
                 }
                 if ((this.Owner as ClickPlace).CheckAllFieldsClickPlace())
                     (this.Owner as ClickPlace).btnSaveToPlace.IsEnabled = true;
             }
-
         }
     }
 }

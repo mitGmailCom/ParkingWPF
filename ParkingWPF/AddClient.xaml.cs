@@ -19,14 +19,83 @@ namespace ParkingWPF
     /// </summary>
     public partial class AddClient : Window
     {
+        public List<string> ListOfStringType;
+        public List<string> ListOfIntType;
+        public List<string> ListOfDateType;
+
         public AddClient()
         {
             InitializeComponent();
+            Loaded += AddClient_Loaded;
         }
+
+        private void AddClient_Loaded(object sender, RoutedEventArgs e)
+        {
+            ListOfStringType = new List<string>() { nameof(txbAddClientLastName), nameof(txbAddClientFirstName), nameof(txbAddClientMidleName), nameof(txbAddClientAdress) };
+            ListOfIntType = new List<string>() { nameof(txbAddClientPhone) };
+            ListOfDateType = new List<string>();
+        }
+
+        private void AddClientToDB()
+        {
+            Client newClient = new Client();
+            newClient.LastName = txbAddClientLastName.Text;
+            newClient.FirstName = txbAddClientFirstName.Text;
+            newClient.MidleName = txbAddClientMidleName.Text;
+            newClient.Phone = Int32.Parse(txbAddClientPhone.Text);
+            newClient.Adress = txbAddClientAdress.Text;
+            using (ParkingContext db = new ParkingContext())
+            {
+                db.Clients.Add(newClient);
+                db.SaveChangesAsync();
+            }
+        }
+
+        private void SetFocusToTextBox()
+        {
+            var list = FindElementByType.FindVisualChildren<TextBox>(this);
+            foreach (TextBox item in list)
+            {
+                if (item.Text == null || item.Text == string.Empty)
+                {
+                    item.Focus();
+                    FocusManager.SetFocusedElement(this, item);
+                    break;
+                }
+            }
+        }
+
+
+        private void btnAddCar_Click(object sender, RoutedEventArgs e)
+        {
+            if (txbAddClientLastName.Text == null || txbAddClientFirstName.Text == null || txbAddClientMidleName.Text == null || txbAddClientPhone == null
+                || txbAddClientAdress == null || txbAddClientLastName.Text == string.Empty || txbAddClientFirstName.Text == string.Empty || txbAddClientMidleName.Text == string.Empty
+                || txbAddClientPhone.Text == string.Empty || txbAddClientAdress.Text == string.Empty)
+            {
+                MessageBox.Show("Please input values all fields!", "Error");
+                SetFocusToTextBox();
+                //CheckFieldsByType();
+                CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this);
+            }
+            else
+            {
+                SetFocusToTextBox();
+                if (CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this))//(CheckFieldsByType())
+                {
+                    AddClientToDB();
+                    (this.Owner as ClickPlace).txbInfoClientLastName.Text = this.txbAddClientLastName.Text;
+                    (this.Owner as ClickPlace).txbInfoClientFirstName.Text = this.txbAddClientFirstName.Text;
+                    (this.Owner as ClickPlace).txbInfoPhone.Text = this.txbAddClientPhone.Text;
+                }
+                if ((this.Owner as ClickPlace).CheckAllFieldsClickPlace())
+                    (this.Owner as ClickPlace).btnSaveToPlace.IsEnabled = true;
+            }
+        }
+
 
         private void btnCancelAddingClient_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

@@ -27,8 +27,8 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Name="btnSelectCar" Content="Select Client"></Button>
-            <Button Grid.Column="1" Name="btnSelectClient" Content="Select Client" Click="btnAddCar_Click"></Button>
+            <Button Grid.Column="0" Name="btnSelectCar" Content="Select Car" Click="btnSelectCar_Click"></Button>
+            <Button Grid.Column="1" Name="btnSelectClient" Content="Select Client" Click="btnSelectClient_Click"></Button>
             <Button Grid.Column="2" Name="btnEditeCar" Content="EditeCar"></Button>
             <Button Grid.Column="3" Name="btnEditeClient" Content="EditeClient"></Button>
         </Grid>
@@ -111,10 +111,10 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="3" Name="btnSaveToPlace" Content="Set to Place"></Button>
+            <Button Grid.Column="3" Name="btnSaveToPlace" Content="Set to Place" Click="btnSaveToPlace_Click"></Button>
             <Button Grid.Column="1" Name="btnAddCar" Content="Add Car" Click="btnAddCar_Click"></Button>
-            <Button Grid.Column="2" Name="btnAddClient" Content="Add Client"></Button>
-            <Button Grid.Column="0" Name="btnMoveFromPlace" Content="Move from place"></Button>
+            <Button Grid.Column="2" Name="btnAddClient" Content="Add Client" Click="btnAddClient_Click"></Button>
+            <Button Grid.Column="0" Name="btnMoveFromPlace" Content="Move from place" Click="btnMoveFromPlace_Click"></Button>
         </Grid>
     </Grid>
 </Window>

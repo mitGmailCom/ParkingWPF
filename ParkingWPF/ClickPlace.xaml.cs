@@ -20,111 +20,113 @@ namespace ParkingWPF
     public partial class ClickPlace : Window
     {
         internal int? SenderPlace { get; set; }
+        internal int IdCar { get; set; }
+        internal int IdClient { get; set; }
 
         public ClickPlace()
         {
             InitializeComponent();
             Loaded += ClickPlace_Loaded;
         }
-        public string PlaceInClickPlace
-        {
-            get
-            {
-                return this.txbInfoPlace.Text;
-            }
-            set
-            {
-                txbInfoPlace.Text = value;
-            }
-        }
-        public string LastNameInClickPlace
-        {
-            get
-            {
-                return this.txbInfoClientLastName.Text;
-            }
-            set
-            {
-                txbInfoClientLastName.Text = value;
-            }
-        }
-        public string FirstNameInClickPlace
-        {
-            get
-            {
-                return this.txbInfoClientFirstName.Text;
-            }
-            set
-            {
-                txbInfoClientFirstName.Text = value;
-            }
-        }
-        public string PhoneInClickPlace
-        {
-            get
-            {
-                return this.txbInfoPhone.Text;
-            }
-            set
-            {
-                txbInfoPhone.Text = value;
-            }
-        }
-        public string ManufactureInClickPlace
-        {
-            get
-            {
-                return this.txbInfoManufacture.Text;
-            }
-            set
-            {
-                txbInfoManufacture.Text = value;
-            }
-        }
-        public string ModelInClickPlace
-        {
-            get
-            {
-                return this.txbInfoModel.Text;
-            }
-            set
-            {
-                txbInfoModel.Text = value;
-            }
-        }
-        public string ColorCarInClickPlace
-        {
-            get
-            {
-                return this.txbInfoColor.Text;
-            }
-            set
-            {
-                txbInfoColor.Text = value;
-            }
-        }
-        public string NumberCarInClickPlace
-        {
-            get
-            {
-                return this.txbInfoNumber.Text;
-            }
-            set
-            {
-                txbInfoNumber.Text = value;
-            }
-        }
-        public string DateAddInClickPlace
-        {
-            get
-            {
-                return this.txbInfoDate.Text;
-            }
-            set
-            {
-                txbInfoDate.Text = value;
-            }
-        }
+        //public string PlaceInClickPlace
+        //{
+        //    get
+        //    {
+        //        return this.txbInfoPlace.Text;
+        //    }
+        //    set
+        //    {
+        //        txbInfoPlace.Text = value;
+        //    }
+        //}
+        //public string LastNameInClickPlace
+        //{
+        //    get
+        //    {
+        //        return this.txbInfoClientLastName.Text;
+        //    }
+        //    set
+        //    {
+        //        txbInfoClientLastName.Text = value;
+        //    }
+        //}
+        //public string FirstNameInClickPlace
+        //{
+        //    get
+        //    {
+        //        return this.txbInfoClientFirstName.Text;
+        //    }
+        //    set
+        //    {
+        //        txbInfoClientFirstName.Text = value;
+        //    }
+        //}
+        //public string PhoneInClickPlace
+        //{
+        //    get
+        //    {
+        //        return this.txbInfoPhone.Text;
+        //    }
+        //    set
+        //    {
+        //        txbInfoPhone.Text = value;
+        //    }
+        //}
+        //public string ManufactureInClickPlace
+        //{
+        //    get
+        //    {
+        //        return this.txbInfoManufacture.Text;
+        //    }
+        //    set
+        //    {
+        //        txbInfoManufacture.Text = value;
+        //    }
+        //}
+        //public string ModelInClickPlace
+        //{
+        //    get
+        //    {
+        //        return this.txbInfoModel.Text;
+        //    }
+        //    set
+        //    {
+        //        txbInfoModel.Text = value;
+        //    }
+        //}
+        //public string ColorCarInClickPlace
+        //{
+        //    get
+        //    {
+        //        return this.txbInfoColor.Text;
+        //    }
+        //    set
+        //    {
+        //        txbInfoColor.Text = value;
+        //    }
+        //}
+        //public string NumberCarInClickPlace
+        //{
+        //    get
+        //    {
+        //        return this.txbInfoNumber.Text;
+        //    }
+        //    set
+        //    {
+        //        txbInfoNumber.Text = value;
+        //    }
+        //}
+        //public string DateAddInClickPlace
+        //{
+        //    get
+        //    {
+        //        return this.txbInfoDate.Text;
+        //    }
+        //    set
+        //    {
+        //        txbInfoDate.Text = value;
+        //    }
+        //}
 
 
         private void ClearValuesInBtn()
@@ -157,7 +159,7 @@ namespace ParkingWPF
             btnAddClient.IsEnabled = true;
             btnEditeCar.IsEnabled = false;
             btnEditeClient.IsEnabled = false;
-            btnMoveFromPlace.IsEnabled = true;
+            btnMoveFromPlace.IsEnabled = false;
             btnSelectCar.IsEnabled = true;
             btnSelectClient.IsEnabled = true;
             btnSaveToPlace.IsEnabled = false;
@@ -181,42 +183,50 @@ namespace ParkingWPF
             ClearValuesInBtn();
             if (SenderPlace != null)
             {
-                using (ParkingContext db = new ParkingContext())
-                {
-                    var placeInfo = db.BalanceParking.Where(p => p.Place == SenderPlace)
-                        .Select(pl => new
-                        {
-                            place = pl.Place,
-                            clientLName = pl.Client.LastName,
-                            clientFName = pl.Client.FirstName,
-                            phone = pl.Client.Phone,
-                            manufacture = pl.Car.Manufacture,
-                            model = pl.Car.Model,
-                            color = pl.Car.Color,
-                            number = pl.Car.NumberCar,
-                            date = pl.DataAdded
-                        }).FirstOrDefault();
+                LoadDataToClickPlace();
+            }
+        }
 
-                    if (placeInfo != null)
+
+        private void LoadDataToClickPlace()
+        {
+            using (ParkingContext db = new ParkingContext())
+            {
+                var placeInfo = db.BalanceParking.Where(p => p.Place == SenderPlace)
+                    .Select(pl => new
                     {
-                        txbInfoPlace.Text = placeInfo.place.ToString();
-                        txbInfoClientFirstName.Text = placeInfo.clientFName;
-                        txbInfoClientLastName.Text = placeInfo.clientLName;
-                        txbInfoPhone.Text = placeInfo.phone.ToString();
-                        txbInfoManufacture.Text = placeInfo.manufacture;
-                        txbInfoModel.Text = placeInfo.model;
-                        txbInfoColor.Text = placeInfo.color;
-                        txbInfoNumber.Text = placeInfo.number;
-                        txbInfoDate.Text = placeInfo.date.ToString("yyyy-mm-dd");
-                        CaseCheckedCar();
-                    }
-                    else
-                    {
-                        CaseNotCheckedCar();
-                    }
+                        place = pl.Place,
+                        clientLName = pl.Client.LastName,
+                        clientFName = pl.Client.FirstName,
+                        phone = pl.Client.Phone,
+                        manufacture = pl.Car.Manufacture,
+                        model = pl.Car.Model,
+                        color = pl.Car.Color,
+                        number = pl.Car.NumberCar,
+                        date = pl.DataAdded
+                    }).FirstOrDefault();
+
+                if (placeInfo != null)
+                {
+                    txbInfoPlace.Text = placeInfo.place.ToString();
+                    txbInfoClientFirstName.Text = placeInfo.clientFName;
+                    txbInfoClientLastName.Text = placeInfo.clientLName;
+                    txbInfoPhone.Text = placeInfo.phone.ToString();
+                    txbInfoManufacture.Text = placeInfo.manufacture;
+                    txbInfoModel.Text = placeInfo.model;
+                    txbInfoColor.Text = placeInfo.color;
+                    txbInfoNumber.Text = placeInfo.number;
+                    txbInfoDate.Text = placeInfo.date.ToString("yyyy-mm-dd");
+                    CaseCheckedCar();
+                }
+                else
+                {
+                    txbInfoPlace.Text = SenderPlace.Value.ToString();
+                    CaseNotCheckedCar();
                 }
             }
         }
+        
 
         public bool CheckAllFieldsClickPlace()
         {
@@ -237,13 +247,14 @@ namespace ParkingWPF
                 res = false;
             if (txbInfoNumber.Text == null || txbInfoNumber.Text == string.Empty)
                 res = false;
-            if (txbInfoDate.Text == null || txbInfoDate.Text == string.Empty)
-                res = false;
+            //if (txbInfoDate.Text == null || txbInfoDate.Text == string.Empty)
+            //    res = false;
             else
                 res = true;
 
             return res;
         }
+
 
         private void btnAddCar_Click(object sender, RoutedEventArgs e)
         {
@@ -251,6 +262,96 @@ namespace ParkingWPF
             AddCar.Owner = this;
             AddCar.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             AddCar.ShowDialog();
+        }
+
+
+        private void btnAddClient_Click(object sender, RoutedEventArgs e)
+        {
+            AddClient addClient = new AddClient();
+            addClient.Owner = this;
+            addClient.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            addClient.ShowDialog();
+        }
+
+
+        private void btnMoveFromPlace_Click(object sender, RoutedEventArgs e)
+        {
+            if (CheckAllFieldsClickPlace())
+            {
+                using (ParkingContext db = new ParkingContext())
+                {
+                    using (var tran = db.Database.BeginTransaction())
+                    {
+                        try
+                        {
+                            BalanceParking bal = db.BalanceParking.Where(b => b.Place == SenderPlace).FirstOrDefault();
+                            //BalanceParking bal = new BalanceParking { Place = (int)SenderPlace };
+                            //db.BalanceParking.Attach(bal);
+                            if (bal != null)
+                            {
+                                db.BalanceParking.Remove(bal);
+                                db.SaveChanges();
+                                tran.Commit();
+                                btnMoveFromPlace.IsEnabled = false;
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            tran.Rollback();
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Add Car with Client to Parking
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSaveToPlace_Click(object sender, RoutedEventArgs e)
+        {
+            if (txbInfoDate.Text == null || txbInfoDate.Text == string.Empty)
+            {
+                txbInfoDate.Text = DateTime.Now.ToShortDateString().ToString();
+            }
+            if (!CheckAllFieldsClickPlace())
+                MessageBox.Show("Please input all fields!", "Warning!");
+            if (CheckAllFieldsClickPlace())
+            {
+                AddToBalanceParking();
+            }
+        }
+
+        private void AddToBalanceParking()
+        {
+            using (ParkingContext db = new ParkingContext())
+            {
+                db.BalanceParking.Add(new BalanceParking { ClientId = IdClient, CarId = IdCar, DataAdded = DateTime.Parse(txbInfoDate.Text), Place = (int)SenderPlace });
+                //db.SaveChanges();
+                db.HistoryAddedCars.Add(new HistoryAddedCars { ClientId = IdClient, CarId = IdCar, DataAdded = DateTime.Parse(txbInfoDate.Text), Place = (int)SenderPlace });
+                db.SaveChanges();
+            }
+        }
+
+
+        private void btnSelectCar_Click(object sender, RoutedEventArgs e)
+        {
+            SelectCar selectCar = new SelectCar();
+            selectCar.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            selectCar.Owner = this;
+            selectCar.ShowDialog();
+        }
+
+        private void btnSelectClient_Click(object sender, RoutedEventArgs e)
+        {
+            SelectClient selectClient = new SelectClient();
+            selectClient.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            selectClient.Owner = this;
+            selectClient.ShowDialog();
         }
     }
 }

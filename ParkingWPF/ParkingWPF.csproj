@@ -71,14 +71,22 @@
     <Compile Include="AddClient.xaml.cs">
       <DependentUpon>AddClient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CheckFieldsByType.cs" />
     <Compile Include="ClickPlace.xaml.cs">
       <DependentUpon>ClickPlace.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FindElementByType.cs" />
     <Compile Include="Sector1.xaml.cs">
       <DependentUpon>Sector1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sector2.xaml.cs">
       <DependentUpon>Sector2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectCar.xaml.cs">
+      <DependentUpon>SelectCar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectClient.xaml.cs">
+      <DependentUpon>SelectClient.xaml</DependentUpon>
     </Compile>
     <Page Include="AddCar.xaml">
       <SubType>Designer</SubType>
@@ -115,6 +123,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sector2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
