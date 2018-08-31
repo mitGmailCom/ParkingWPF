@@ -46,8 +46,14 @@ namespace ParkingWPF
             newClient.Adress = txbAddClientAdress.Text;
             using (ParkingContext db = new ParkingContext())
             {
-                db.Clients.Add(newClient);
-                db.SaveChangesAsync();
+                var tempClient = db.Clients.Where(c => c.Phone == newClient.Phone).FirstOrDefault();
+                if (tempClient == null)
+                {
+                    db.Clients.Add(newClient);
+                    db.SaveChanges();
+                }
+                else
+                    MessageBox.Show("I can't to add this client. He exist in Database!", "Warrning!");
             }
         }
 

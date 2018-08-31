@@ -45,8 +45,14 @@ namespace ParkingWPF
             newCar.NumberCar = txbAddNumberCar.Text;
             using (ParkingContext db = new ParkingContext())
             {
-                db.Cars.Add(newCar);
-                db.SaveChanges();
+                var tempCar = db.Cars.Where(c => c.NumberCar == newCar.NumberCar).FirstOrDefault();
+                if (tempCar == null)
+                {
+                    db.Cars.Add(newCar);
+                    db.SaveChanges();
+                }
+                else
+                    MessageBox.Show("I can't to add this car. It exists in Database!", "Warrning!");
             }
         }
 

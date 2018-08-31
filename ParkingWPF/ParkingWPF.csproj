@@ -88,6 +88,7 @@
     <Compile Include="SelectClient.xaml.cs">
       <DependentUpon>SelectClient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SetColor.cs" />
     <Page Include="AddCar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

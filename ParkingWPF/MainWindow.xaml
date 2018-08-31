@@ -13,12 +13,22 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="6*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <Menu Name="menu" HorizontalAlignment="Left" Margin="0,0,0,-62" VerticalAlignment="Top"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock TextAlignment="Left" Text="Введите телефон клиента:"></TextBlock>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock TextAlignment="Left" Text="Введите номер авто:"></TextBlock>
+                </Grid>
+                <!--<Menu Name="menu" HorizontalAlignment="Left" Margin="0,0,0,-62" VerticalAlignment="Top"/>-->
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -26,25 +36,44 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <TextBlock TextAlignment="Center" Text="Введите фамилию клиента:"></TextBlock>
+                    <TextBox TextAlignment="Center" Name="txbFindByPhoneClient"></TextBox>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBox TextAlignment="Center" Name="txbFindByNumberCar"></TextBox>
                 </Grid>
             </Grid>
-            <Grid Grid.Column="2">
-                <Button>
+            <Grid Grid.Column="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="7*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <RadioButton HorizontalAlignment="Stretch" GroupName="GroupFind" Name="radioBtnPhoneClient" Checked="radioBtnPhoneClient_Checked"></RadioButton>
+                    </Grid>
+                    <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <RadioButton HorizontalAlignment="Stretch" GroupName="GroupFind" Name="radioBtnNumberCar" Checked="radioBtnPhoneClient_Checked"></RadioButton>
+                    </Grid>
+                </Grid>
+                <Button Grid.Column="1" Name="btnFindMain" Click="btnFindMain_Click">
                     <TextBlock Text="Поиск"/>
                 </Button>
             </Grid>
         </Grid>
-        
-        
+
+
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
-            
+
+
             <Grid Grid.Row="1" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="7*"></RowDefinition>
@@ -87,8 +116,8 @@
                     </Grid>
                 </Grid>
             </Grid>
-            
-            
+
+
             <Grid Grid.Row="1" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="7*"></RowDefinition>
@@ -131,8 +160,8 @@
                     </Grid>
                 </Grid>
             </Grid>
-            
-            
+
+
             <Grid Grid.Row="1" Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="7*"></RowDefinition>
