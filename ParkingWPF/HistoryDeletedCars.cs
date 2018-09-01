@@ -18,7 +18,7 @@ namespace ParkingWPF
         [Required]
         public int CarId { get; set; }
         [Required]
-        [Column("DateAdded", TypeName ="date")]
+        [Column("DateAdded", TypeName = "date")]
         public DateTime DataAdded { get; set; }
         [Required]
         public int Place { get; set; }

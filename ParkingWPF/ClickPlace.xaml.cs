@@ -211,7 +211,7 @@ namespace ParkingWPF
                     txbInfoModel.Text = placeInfo.model;
                     txbInfoColor.Text = placeInfo.color;
                     txbInfoNumber.Text = placeInfo.number;
-                    txbInfoDate.Text = placeInfo.date.ToString("yyyy-mm-dd");
+                    txbInfoDate.Text = placeInfo.date.ToShortDateString();
                     CaseCheckedCar();
                 }
                 else
@@ -307,11 +307,14 @@ namespace ParkingWPF
                             if (bal != null)
                             {
                                 db.BalanceParking.Remove(bal);
+                                db.HistoryDeletedCars.Add(new HistoryDeletedCars { ClientId = bal.ClientId, CarId = bal.CarId, DataAdded = bal.DataAdded, Place = (int)SenderPlace });
                                 db.SaveChanges();
                                 tran.Commit();
                                 btnMoveFromPlace.IsEnabled = false;
                                 btnSaveToPlace.IsEnabled = false;
-                                SetColor.SetColorForPlaces((List<Button>)this.Owner.Tag);
+                                StatisticsOfPlaces.UpdateStatisticsPlaces(bal.Place, '-');
+                                StatisticsOfPlaces.ShowStatisticsInMainWind();
+                                SetColor.SetColorForPlaces((List<Button>)(this.Owner as MainWindow).ListButtons);
                                 this.Close();
                             }
                         }
@@ -355,6 +358,8 @@ namespace ParkingWPF
                     db.BalanceParking.Add(temPlace);
                     db.HistoryAddedCars.Add(new HistoryAddedCars { ClientId = tempClient.Id, CarId = tempCar.Id, DataAdded = DateTime.Parse(txbInfoDate.Text), Place = (int)SenderPlace });
                     db.SaveChanges();
+                    StatisticsOfPlaces.UpdateStatisticsPlaces(temPlace.Place, '+');
+                    StatisticsOfPlaces.ShowStatisticsInMainWind();
                     SetColor.SetColorForPlaces((List<Button>)(this.Owner as MainWindow).ListButtons);
                     this.Close();
                 }

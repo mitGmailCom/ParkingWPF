@@ -97,7 +97,7 @@
                             <ColumnDefinition Width="2.3*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Кол-во мест"></TextBlock>
-                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100" Name="txBlPlacesSector1"></TextBlock>
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -105,7 +105,7 @@
                             <ColumnDefinition Width="2.3*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Кол-во свободных мест"></TextBlock>
-                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100" Name="txBlFreePlacesSector1"></TextBlock>
                     </Grid>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
@@ -113,7 +113,7 @@
                             <ColumnDefinition Width="2.3*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Кол-во занятых мест"></TextBlock>
-                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100" Name="txBlNotFreePlacesSector1"></TextBlock>
                     </Grid>
                 </Grid>
             </Grid>
@@ -141,7 +141,7 @@
                             <ColumnDefinition Width="2.3*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Кол-во мест"></TextBlock>
-                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100" Name="txBlPlacesSector2"></TextBlock>
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -149,7 +149,7 @@
                             <ColumnDefinition Width="2.3*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Кол-во свободных мест"></TextBlock>
-                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100" Name="txBlFreePlacesSector2"></TextBlock>
                     </Grid>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
@@ -157,7 +157,7 @@
                             <ColumnDefinition Width="2.3*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Кол-во занятых мест"></TextBlock>
-                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100" Name="txBlNotFreePlacesSector2"></TextBlock>
                     </Grid>
                 </Grid>
             </Grid>
@@ -185,7 +185,7 @@
                             <ColumnDefinition Width="2.3*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Кол-во мест"></TextBlock>
-                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100" Name="txBlPlacesSector3"></TextBlock>
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -193,7 +193,7 @@
                             <ColumnDefinition Width="2.3*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Кол-во свободных мест"></TextBlock>
-                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100" Name="txBlFreePlacesSector3"></TextBlock>
                     </Grid>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
@@ -201,7 +201,7 @@
                             <ColumnDefinition Width="2.3*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Кол-во занятых мест"></TextBlock>
-                        <TextBlock Grid.Column="1" Text="100"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="100" Name="txBlNotFreePlacesSector3"></TextBlock>
                     </Grid>
                 </Grid>
             </Grid>

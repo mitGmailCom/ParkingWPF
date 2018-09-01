@@ -27,6 +27,10 @@ public partial class MainWindow : Window
         /// </summary>
         private int ParkingPlaces { get; set; } = 69;
         protected internal List<Button> ListButtons { get; set; }
+        protected internal List<int> ListPlaces;
+        protected int CountPlacesSector1 { get; set; }
+        protected int CountPlacesSector2 { get; set; }
+        protected int CountPlacesSector3 { get; set; }
         Sector1 sector1;
         Sector2 sector2;
         Sector3 sector3;
@@ -40,27 +44,16 @@ public partial class MainWindow : Window
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             ListButtons = new List<Button>();
+            ListPlaces = new List<int>();
+            StatisticsOfPlaces.StatisticOfPlacesLoad();
+            StatisticsOfPlaces.ShowStatisticsInMainWind(this);
 
             RegisterWindForSectors();
             AddBtnToList();
             AddTextToButton();
-
-            using (ParkingContext db = new ParkingContext())
-            {
-                //Car car = new Car { Manufacture = "Audi", Model = "200", Color = "Black", NumberCar = "АВ7633НП" };
-                //Client client = new Client { FirstName = "Petr", LastName = "Petrov", MidleName = "Petrovich", Adress = "KrivoyRoh", Phone = 0983766543 };
-                //ClientCarRelation rel = new ClientCarRelation { CarId = 4, ClientId = 2 };
-                //db.Cars.Add(car);
-                //db.Clients.Add(client);
-                //db.ClientCarRelation.Add(rel);
-                //BalanceParking bl = new BalanceParking { CarId = 4, ClientId = 2, DataAdded = DateTime.Now, Place = 4 };
-                //db.BalanceParking.Add(bl);
-                //db.SaveChanges();
-
-
-
-            }
         }
+
+
         /// <summary>
         /// Allocation memorry for sectors
         /// </summary>
@@ -291,12 +284,12 @@ public partial class MainWindow : Window
                 SetColor.SetColorForPlaces(ListButtons);
                 sector1.Show();
             }
-            if (Int32.Parse(result.Place.ToString()) > 21 & Int32.Parse(result.Place.ToString()) < 47)
+            if (Int32.Parse(result.Place.ToString()) > 21 & Int32.Parse(result.Place.ToString()) < 46)
             {
                 SetColor.SetColorForPlaces(ListButtons);
                 sector2.Show();
             }
-            if (Int32.Parse(result.Place.ToString()) > 46 & Int32.Parse(result.Place.ToString()) < 68)
+            if (Int32.Parse(result.Place.ToString()) > 45 & Int32.Parse(result.Place.ToString()) < 67)
                 sector3.Show();
         }
 
@@ -334,5 +327,6 @@ public partial class MainWindow : Window
             addClient.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             addClient.ShowDialog();
         }
+
     }
 }
