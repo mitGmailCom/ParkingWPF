@@ -69,7 +69,7 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1" Content="Cancel" Name="btnCancelAddingClient" Click="btnCancelAddingClient_Click"></Button>
-            <Button Grid.Column="3" Content="Add Client" Name="btnAddClient"></Button>
+            <Button Grid.Column="3" Content="Add Client" Name="btnAddClient" Click="btnAddClient_Click"></Button>
         </Grid>
     </Grid>
 </Window>

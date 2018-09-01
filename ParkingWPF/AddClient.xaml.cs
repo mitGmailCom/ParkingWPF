@@ -57,6 +57,7 @@ namespace ParkingWPF
             }
         }
 
+
         private void SetFocusToTextBox()
         {
             var list = FindElementByType.FindVisualChildren<TextBox>(this);
@@ -72,36 +73,57 @@ namespace ParkingWPF
         }
 
 
-        private void btnAddCar_Click(object sender, RoutedEventArgs e)
+        private void AddDataToClickPlace()
         {
+            (this.Owner as ClickPlace).txbInfoClientLastName.Text = this.txbAddClientLastName.Text;
+            (this.Owner as ClickPlace).txbInfoClientFirstName.Text = this.txbAddClientFirstName.Text;
+            (this.Owner as ClickPlace).txbInfoPhone.Text = this.txbAddClientPhone.Text;
+        }
+
+
+        private bool AddClientInGeneral()
+        {
+            // проверка на ввод
             if (txbAddClientLastName.Text == null || txbAddClientFirstName.Text == null || txbAddClientMidleName.Text == null || txbAddClientPhone == null
-                || txbAddClientAdress == null || txbAddClientLastName.Text == string.Empty || txbAddClientFirstName.Text == string.Empty || txbAddClientMidleName.Text == string.Empty
-                || txbAddClientPhone.Text == string.Empty || txbAddClientAdress.Text == string.Empty)
+                 || txbAddClientAdress == null || txbAddClientLastName.Text == string.Empty || txbAddClientFirstName.Text == string.Empty || txbAddClientMidleName.Text == string.Empty
+                 || txbAddClientPhone.Text == string.Empty || txbAddClientAdress.Text == string.Empty)
             {
                 MessageBox.Show("Please input values all fields!", "Error");
                 SetFocusToTextBox();
-                //CheckFieldsByType();
                 CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this);
+                return false;
             }
             else
             {
-                SetFocusToTextBox();
-                if (CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this))//(CheckFieldsByType())
-                {
+                //SetFocusToTextBox();
+                if (CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this))
                     AddClientToDB();
-                    (this.Owner as ClickPlace).txbInfoClientLastName.Text = this.txbAddClientLastName.Text;
-                    (this.Owner as ClickPlace).txbInfoClientFirstName.Text = this.txbAddClientFirstName.Text;
-                    (this.Owner as ClickPlace).txbInfoPhone.Text = this.txbAddClientPhone.Text;
-                }
-                if ((this.Owner as ClickPlace).CheckAllFieldsClickPlace())
-                    (this.Owner as ClickPlace).btnSaveToPlace.IsEnabled = true;
+                return true;
             }
         }
+
+
+
+        private void btnAddClient_Click(object sender, RoutedEventArgs e)
+        {
+            if (AddClientInGeneral())
+            {
+                if (this.Owner is ClickPlace)
+                {
+                    AddDataToClickPlace();
+                    if ((this.Owner as ClickPlace).CheckAllFieldsClickPlace())
+                        (this.Owner as ClickPlace).btnSaveToPlace.IsEnabled = true;
+                    this.Close();
+                }
+            }
+        }
+
 
 
         private void btnCancelAddingClient_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+
     }
 }

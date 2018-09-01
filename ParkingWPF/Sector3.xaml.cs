@@ -15,14 +15,15 @@ using System.Windows.Shapes;
 namespace ParkingWPF
 {
     /// <summary>
-    /// Логика взаимодействия для Sector1.xaml
+    /// Логика взаимодействия для Sector3.xaml
     /// </summary>
-    public partial class Sector1 : Window
+    public partial class Sector3 : Window
     {
-        public Sector1()
+        public Sector3()
         {
             InitializeComponent();
         }
+
 
 
         /// <summary>

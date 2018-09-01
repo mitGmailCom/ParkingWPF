@@ -21,7 +21,7 @@ namespace ParkingWPF
                 var res = ListOfIntType.Where(e => e == item.Name).FirstOrDefault();
                 if (res != null)
                 {
-                    bool isNumber = Int32.TryParse(res, out tempNumberCar);
+                    bool isNumber = Int32.TryParse(item.Text, out tempNumberCar);
                     if (isNumber)
                         result = true;
                     else

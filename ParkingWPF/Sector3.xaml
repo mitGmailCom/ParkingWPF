@@ -1,17 +1,17 @@
-﻿<Window x:Class="ParkingWPF.Sector1"
+﻿<Window x:Class="ParkingWPF.Sector3"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ParkingWPF"
         mc:Ignorable="d"
-        Title="Sector1" Height="550" Width="550" Closing="Window_Closing">
+        Title="Sector3" Height="550" Width="550" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="8*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2.2*"></RowDefinition>
                 <RowDefinition Height="6.6*"></RowDefinition>
@@ -25,15 +25,15 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Name="btnPlace17" Click="btnPlace_Click"></Button>
-                <Button Grid.Row="1" Name="btnPlace16" Click="btnPlace_Click"></Button>
-                <Button Grid.Row="2" Name="btnPlace15" Click="btnPlace_Click"></Button>
-                <Button Grid.Row="3" Name="btnPlace14" Click="btnPlace_Click"></Button>
-                <Button Grid.Row="4" Name="btnPlace13" Click="btnPlace_Click"></Button>
+                <Button Grid.Row="0" Name="btnPlace52" Click="btnPlace_Click"></Button>
+                <Button Grid.Row="1" Name="btnPlace53" Click="btnPlace_Click"></Button>
+                <Button Grid.Row="2" Name="btnPlace54" Click="btnPlace_Click"></Button>
+                <Button Grid.Row="3" Name="btnPlace55" Click="btnPlace_Click"></Button>
+                <Button Grid.Row="4" Name="btnPlace56" Click="btnPlace_Click"></Button>
             </Grid>
         </Grid>
 
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"></RowDefinition>
                 <RowDefinition Height="2*"></RowDefinition>
@@ -50,12 +50,12 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Name="btnPlace1" Click="btnPlace_Click"></Button>
-                <Button Grid.Column="1" Name="btnPlace2" Click="btnPlace_Click"></Button>
-                <Button Grid.Column="2" Name="btnPlace3" Click="btnPlace_Click"></Button>
-                <Button Grid.Column="3" Name="btnPlace4" Click="btnPlace_Click"></Button>
-                <Button Grid.Column="4" Name="btnPlace5" Click="btnPlace_Click"></Button>
-                <Button Grid.Column="5" Name="btnPlace6" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="0" Name="btnPlace46" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="1" Name="btnPlace47" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="2" Name="btnPlace48" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="3" Name="btnPlace49" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="4" Name="btnPlace50" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="5" Name="btnPlace51" Click="btnPlace_Click"></Button>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -66,10 +66,10 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="2" Name="btnPlace18" Click="btnPlace_Click"></Button>
-                <Button Grid.Column="3" Name="btnPlace19" Click="btnPlace_Click"></Button>
-                <Button Grid.Column="4" Name="btnPlace20" Click="btnPlace_Click"></Button>
-                <Button Grid.Column="5" Name="btnPlace21" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="0" Name="btnPlace63" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="1" Name="btnPlace64" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="2" Name="btnPlace65" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="3" Name="btnPlace66" Click="btnPlace_Click"></Button>
             </Grid>
             <Grid Grid.Row="4">
                 <Grid.ColumnDefinitions>
@@ -80,12 +80,12 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Name="btnPlace12" Click="btnPlace_Click"></Button>
-                <Button Grid.Column="1" Name="btnPlace11" Click="btnPlace_Click"></Button>
-                <Button Grid.Column="2" Name="btnPlace10" Click="btnPlace_Click"></Button>
-                <Button Grid.Column="3" Name="btnPlace9" Click="btnPlace_Click"></Button>
-                <Button Grid.Column="4" Name="btnPlace8" Click="btnPlace_Click"></Button>
-                <Button Grid.Column="5" Name="btnPlace7" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="0" Name="btnPlace62" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="1" Name="btnPlace61" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="2" Name="btnPlace60" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="3" Name="btnPlace59" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="4" Name="btnPlace58" Click="btnPlace_Click"></Button>
+                <Button Grid.Column="5" Name="btnPlace57" Click="btnPlace_Click"></Button>
             </Grid>
         </Grid>
     </Grid>

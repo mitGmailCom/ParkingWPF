@@ -25,11 +25,11 @@ public partial class MainWindow : Window
         /// <summary>
         /// Number of plases in the parking
         /// </summary>
-        private int ParkingPlaces { get; set; } = 66;
+        private int ParkingPlaces { get; set; } = 69;
         protected internal List<Button> ListButtons { get; set; }
         Sector1 sector1;
         Sector2 sector2;
-        //Sector3 sector3;
+        Sector3 sector3;
 
         public MainWindow()
         {
@@ -61,6 +61,9 @@ public partial class MainWindow : Window
 
             }
         }
+        /// <summary>
+        /// Allocation memorry for sectors
+        /// </summary>
         private void RegisterWindForSectors()
         {
             sector1 = new Sector1();
@@ -69,6 +72,9 @@ public partial class MainWindow : Window
             sector2 = new Sector2();
             sector2.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             sector2.Owner = this;
+            sector3 = new Sector3();
+            sector3.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            sector3.Owner = this;
         }
 
 
@@ -80,20 +86,27 @@ public partial class MainWindow : Window
             }
         }
 
+
+        /// <summary>
+        /// Add buttons to list
+        /// </summary>
         private void AddBtnToList()
         {
             ListButtons.AddRange(new List<Button> { sector1.btnPlace1, sector1.btnPlace2, sector1.btnPlace3, sector1.btnPlace4, sector1.btnPlace5, sector1.btnPlace6, sector1.btnPlace7,
                 sector1.btnPlace8, sector1.btnPlace9, sector1.btnPlace10, sector1.btnPlace11, sector1.btnPlace12, sector1.btnPlace13, sector1.btnPlace14, sector1.btnPlace15,
-                sector1.btnPlace16, sector1.btnPlace17, sector1.btnPlace18, sector1.btnPlace19, sector1.btnPlace20, sector1.btnPlace21 });
-            //, sector1.btnPlace22, sector1.btnPlace23,
-            //sector1.btnPlace24, sector1.btnPlace25, sector1.btnPlace26, sector1.btnPlace27, sector1.btnPlace28, sector1.btnPlace29, sector1.btnPlace30, sector1.btnPlace31,
-            //sector1.btnPlace32, sector1.btnPlace33, sector1.btnPlace34, sector1.btnPlace35, sector1.btnPlace36, sector1.btnPlace37, sector1.btnPlace38, sector1.btnPlace39,
-            //sector1.btnPlace40, sector1.btnPlace41, sector1.btnPlace42, sector1.btnPlace43, sector1.btnPlace44, sector1.btnPlace45, sector1.btnPlace46, sector1.btnPlace47,
-            //sector1.btnPlace48, sector1.btnPlace49, sector1.btnPlace50, sector1.btnPlace51, sector1.btnPlace52, sector1.btnPlace53, sector1.btnPlace54, sector1.btnPlace55,
-            //sector1.btnPlace56, sector1.btnPlace57, sector1.btnPlace58, sector1.btnPlace59, sector1.btnPlace60, sector1.btnPlace61, sector1.btnPlace62, sector1.btnPlace63,
-            //sector1.btnPlace64, sector1.btnPlace65, sector1.btnPlace66);*//
+                sector1.btnPlace16, sector1.btnPlace17, sector1.btnPlace18, sector1.btnPlace19, sector1.btnPlace20, sector1.btnPlace21,
+                sector2.btnPlace22, sector2.btnPlace23, sector2.btnPlace24, sector2.btnPlace25, sector2.btnPlace26, sector2.btnPlace27, sector2.btnPlace28, sector2.btnPlace29,
+                sector2.btnPlace30, sector2.btnPlace31, sector2.btnPlace32, sector2.btnPlace33, sector2.btnPlace34, sector2.btnPlace35, sector2.btnPlace36, sector2.btnPlace37,
+                sector2.btnPlace38, sector2.btnPlace39, sector2.btnPlace40, sector2.btnPlace41, sector2.btnPlace42, sector2.btnPlace43, sector2.btnPlace44, sector2.btnPlace45,
+                sector3.btnPlace46, sector3.btnPlace47, sector3.btnPlace48, sector3.btnPlace49, sector3.btnPlace50, sector3.btnPlace51, sector3.btnPlace52, sector3.btnPlace53,
+                sector3.btnPlace54, sector3.btnPlace55, sector3.btnPlace56, sector3.btnPlace57, sector3.btnPlace58, sector3.btnPlace59, sector3.btnPlace60, sector3.btnPlace61,
+                sector3.btnPlace62, sector3.btnPlace63, sector3.btnPlace64, sector3.btnPlace65, sector3.btnPlace66 });
         }
 
+
+        /// <summary>
+        /// Add content to buttons in list of buttons
+        /// </summary>
         private void AddTextToButton()
         {
             for (int i = 0; i < ListButtons.Count; i++)
@@ -102,6 +115,7 @@ public partial class MainWindow : Window
                     (ListButtons[i] as Button).Content = i + 1;
             }
         }
+
 
         //private void SetColorPlace()
         //{
@@ -128,27 +142,64 @@ public partial class MainWindow : Window
 
 
         /// <summary>
-        /// Show sector 1
+        /// Set for any sectors color scheme
+        /// </summary>
+        /// <param name="obj"></param>
+        private void SetColorSchemeSectors(dynamic obj)
+        {
+            ClickOnPlace.DefaultSettingsForButtons(this);
+            if ((obj).Visibility == Visibility.Hidden)
+            {
+                // установка цветовой схемы для мест на стоянки
+                SetColor.SetColorForPlaces(ListButtons);
+                obj.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                SetColor.SetColorForPlaces(ListButtons);
+                obj.Show();
+            }
+        }
+
+
+
+        /// <summary>
+        /// Event for click on button Sector1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnSector1_Click(object sender, RoutedEventArgs e)
         {
-            //SetColorPlace();
-            if (sector1.Visibility == Visibility.Hidden)
-            {
-                SetColor.SetColorForPlaces(ListButtons);
-                sector1.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                SetColor.SetColorForPlaces(ListButtons);
-                sector1.Tag = ListButtons;
-                sector1.Show();
-            }
+            SetColorSchemeSectors(sector1);
+        }
+
+        /// <summary>
+        /// Event for click on button Sector2
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSector2_Click(object sender, RoutedEventArgs e)
+        {
+            SetColorSchemeSectors(sector2);
         }
 
 
+        /// <summary>
+        /// Event for click on button Sector3
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSector3_Click(object sender, RoutedEventArgs e)
+        {
+            SetColorSchemeSectors(sector3);
+        }
+
+
+        /// <summary>
+        /// Event for state radiobutton in radiogroup GroupFind
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioBtnPhoneClient_Checked(object sender, RoutedEventArgs e)
         {
             string nameRadioBtn = (sender as RadioButton).Name;
@@ -164,17 +215,57 @@ public partial class MainWindow : Window
             }
         }
 
+
+        /// <summary>
+        /// Event for click on button FindMain
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFindMain_Click(object sender, RoutedEventArgs e)
         {
+            // Если активны txbFindByNumberCar и txbFindByPhoneClient одновременно
+            if (txbFindByNumberCar.IsEnabled & txbFindByPhoneClient.IsEnabled)
+                return;
+
+            // Если активна txbFindByNumberCar
             if (txbFindByNumberCar.IsEnabled)
             {
                 if (txbFindByNumberCar.Text != null || txbFindByNumberCar.Text != string.Empty)
-                {
                     FindPlaceByNumberCar(txbFindByNumberCar.Text);
+            }
+
+            // Если активна txbFindByPhoneClient
+            if (txbFindByPhoneClient.IsEnabled)
+            {
+                if (txbFindByPhoneClient.Text != null || txbFindByPhoneClient.Text != string.Empty)
+                    FindPlaceByPhoneClient(txbFindByPhoneClient.Text);
+            }
+        }
+
+
+        /// <summary>
+        /// Find place by client's phone
+        /// </summary>
+        /// <param name="phoneClient"></param>
+        private void FindPlaceByPhoneClient(string phoneClient)
+        {
+            phoneClient = phoneClient.TrimStart('0');
+            using (ParkingContext db = new ParkingContext())
+            {
+                BalanceParking findPlace = db.BalanceParking.Where(p => p.Client.Phone.ToString() == phoneClient.ToString()).FirstOrDefault();
+                if (findPlace != null)
+                {
+                    if (FindPlaceSetScheme(ListButtons, findPlace))
+                        ShowSector(findPlace);
                 }
             }
         }
 
+
+        /// <summary>
+        /// Find place by numberCar
+        /// </summary>
+        /// <param name="numberCar"></param>
         private void FindPlaceByNumberCar(string numberCar)
         {
             using (ParkingContext db = new ParkingContext())
@@ -182,29 +273,41 @@ public partial class MainWindow : Window
                 BalanceParking findPlace = db.BalanceParking.Where(p => p.Car.NumberCar == numberCar).FirstOrDefault();
                 if (findPlace != null)
                 {
-                    if (FindPlace(ListButtons, findPlace))
+                    if (FindPlaceSetScheme(ListButtons, findPlace))
                         ShowSector(findPlace);
                 }
             }
         }
 
+
+        /// <summary>
+        /// Show place in sector with border
+        /// </summary>
+        /// <param name="result"></param>
         private void ShowSector(BalanceParking result)
         {
-            if (Int32.Parse(result.Place.ToString()) > 0 & Int32.Parse(result.Place.ToString()) < 21)
+            if (Int32.Parse(result.Place.ToString()) > 0 & Int32.Parse(result.Place.ToString()) < 22)
             {
                 SetColor.SetColorForPlaces(ListButtons);
                 sector1.Show();
             }
-            if (Int32.Parse(result.Place.ToString()) > 21 & Int32.Parse(result.Place.ToString()) < 46)
+            if (Int32.Parse(result.Place.ToString()) > 21 & Int32.Parse(result.Place.ToString()) < 47)
             {
                 SetColor.SetColorForPlaces(ListButtons);
                 sector2.Show();
             }
-            //if (Int32.Parse(result.Content.ToString()) > 0 & Int32.Parse(result.Content.ToString()) < 21)
-            //    sector3.ShowDialog();
+            if (Int32.Parse(result.Place.ToString()) > 46 & Int32.Parse(result.Place.ToString()) < 68)
+                sector3.Show();
         }
 
-        private bool FindPlace(IEnumerable<Button> ListBtns, BalanceParking blPark)
+
+        /// <summary>
+        /// Notice place in list of buttons
+        /// </summary>
+        /// <param name="ListBtns"></param>
+        /// <param name="blPark"></param>
+        /// <returns></returns>
+        private bool FindPlaceSetScheme(IEnumerable<Button> ListBtns, BalanceParking blPark)
         {
             var res = ListBtns.Where(n => n.Content.ToString() == blPark.Place.ToString()).FirstOrDefault();
             if (res != null)
@@ -215,7 +318,21 @@ public partial class MainWindow : Window
             }
             return false;
         }
-    }
 
-    
+        private void AddCar_Click(object sender, RoutedEventArgs e)
+        {
+            AddCar AddCar = new AddCar();
+            AddCar.Owner = this;
+            AddCar.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            AddCar.ShowDialog();
+        }
+
+        private void AddClient_Click(object sender, RoutedEventArgs e)
+        {
+            AddClient addClient = new AddClient();
+            addClient.Owner = this;
+            addClient.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            addClient.ShowDialog();
+        }
+    }
 }

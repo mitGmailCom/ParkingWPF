@@ -23,5 +23,28 @@ namespace ParkingWPF
         {
             InitializeComponent();
         }
+
+
+        /// <summary>
+        /// Event for click on any button in window Sector
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPlace_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow tempMainWind = (this.Owner as MainWindow);
+            ClickOnPlace.ClickOnAnyPlace(sender, e, tempMainWind);
+        }
+
+        /// <summary>
+        /// Event for closing window Sector1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visibility = Visibility.Hidden;
+        }
     }
 }

@@ -36,6 +36,7 @@ namespace ParkingWPF
             ListOfDateType = new List<string>();
         }
 
+
         private void AddCarToDB()
         {
             Car newCar = new Car();
@@ -55,27 +56,6 @@ namespace ParkingWPF
                     MessageBox.Show("I can't to add this car. It exists in Database!", "Warrning!");
             }
         }
-
-
-        //public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
-        //{
-        //    if (depObj != null)
-        //    {
-        //        for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-        //        {
-        //            DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-        //            if (child != null && child is T)
-        //            {
-        //                yield return (T)child;
-        //            }
-
-        //            foreach (T childOfChild in FindVisualChildren<T>(child))
-        //            {
-        //                yield return childOfChild;
-        //            }
-        //        }
-        //    }
-        //}
 
 
         private void SetFocusToTextBox()
@@ -140,6 +120,7 @@ namespace ParkingWPF
         }
 
 
+
         /// <summary>
         /// Add object Car to Datebase
         /// </summary>
@@ -147,28 +128,45 @@ namespace ParkingWPF
         /// <param name="e"></param>
         private void btnAddCar_Click(object sender, RoutedEventArgs e)
         {
+            if (AddCarInGeneral())
+            {
+                if (this.Owner is ClickPlace)
+                {
+                    AddDataToClickPlace();
+                    if ((this.Owner as ClickPlace).CheckAllFieldsClickPlace())
+                        (this.Owner as ClickPlace).btnSaveToPlace.IsEnabled = true;
+                }
+            }
+        }
+
+
+        private bool AddCarInGeneral()
+        {
+            // проверка на ввод
             if (txbAddManufacture.Text == null || txbAddModel.Text == null || txbAddColorCar.Text == null || txbAddNumberCar == null ||
                 txbAddManufacture.Text == string.Empty || txbAddModel.Text == string.Empty || txbAddColorCar.Text == string.Empty || txbAddNumberCar.Text == string.Empty)
             {
                 MessageBox.Show("Please input values into all fields!", "Error");
                 SetFocusToTextBox();
-                //CheckFieldsByType();
                 CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this);
+                return false;
             }
             else
             {
-                SetFocusToTextBox();
-                if (CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this))//(CheckFieldsByType())
-                {
+                //SetFocusToTextBox();
+                if (CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this))
                     AddCarToDB();
-                    (this.Owner as ClickPlace).txbInfoManufacture.Text = this.txbAddManufacture.Text;
-                    (this.Owner as ClickPlace).txbInfoModel.Text = this.txbAddModel.Text;
-                    (this.Owner as ClickPlace).txbInfoColor.Text = this.txbAddColorCar.Text;
-                    (this.Owner as ClickPlace).txbInfoNumber.Text = this.txbAddNumberCar.Text;
-                }
-                if ((this.Owner as ClickPlace).CheckAllFieldsClickPlace())
-                    (this.Owner as ClickPlace).btnSaveToPlace.IsEnabled = true;
+                return true;
             }
+        }
+
+
+        private void AddDataToClickPlace()
+        {
+            (this.Owner as ClickPlace).txbInfoManufacture.Text = this.txbAddManufacture.Text;
+            (this.Owner as ClickPlace).txbInfoModel.Text = this.txbAddModel.Text;
+            (this.Owner as ClickPlace).txbInfoColor.Text = this.txbAddColorCar.Text;
+            (this.Owner as ClickPlace).txbInfoNumber.Text = this.txbAddNumberCar.Text;
         }
     }
 }

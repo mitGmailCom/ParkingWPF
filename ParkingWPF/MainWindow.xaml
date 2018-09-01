@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ParkingWPF"
         mc:Ignorable="d"
-        Title="Parking" Height="350" Width="525" WindowStartupLocation="CenterScreen" Name="mainWindow">
+        Title="Parking" Height="400" Width="525" WindowStartupLocation="CenterScreen" Name="mainWindow">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.2*"></RowDefinition>
-            <RowDefinition Height="8.8*"></RowDefinition>
+            <RowDefinition Height="1.3*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="0.7*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -124,7 +125,7 @@
                     <RowDefinition Height="3*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Button Name="btnSector2">
+                    <Button Name="btnSector2" Click="btnSector2_Click">
                         <TextBlock Text="Сектор 2" FontSize="26"></TextBlock>
                     </Button>
                 </Grid>
@@ -168,7 +169,7 @@
                     <RowDefinition Height="3*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Button Name="btnSector3">
+                    <Button Name="btnSector3" Click="btnSector3_Click">
                         <TextBlock Text="Сектор 3" FontSize="26"></TextBlock>
                     </Button>
                 </Grid>
@@ -204,6 +205,14 @@
                     </Grid>
                 </Grid>
             </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Name="AddCar" Content="Add Car" Click="AddCar_Click"></Button>
+            <Button Grid.Column="1" Name="AddClient" Content="Add Client" Click="AddClient_Click"></Button>
         </Grid>
     </Grid>
 </Window>

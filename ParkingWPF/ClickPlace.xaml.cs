@@ -165,18 +165,6 @@ namespace ParkingWPF
             btnSaveToPlace.IsEnabled = false;
         }
 
-        //public struct InfoPlace
-        //{
-        //    public int place;
-        //    string lastName;
-        //    string firstName;
-        //    int phone;
-        //    string manufacture;
-        //    string madel;
-        //    string color;
-        //    int number;
-        //    DateTime dateAdding;
-        //}
 
         private void ClickPlace_Loaded(object sender, RoutedEventArgs e)
         {
@@ -212,6 +200,13 @@ namespace ParkingWPF
                     txbInfoClientFirstName.Text = placeInfo.clientFName;
                     txbInfoClientLastName.Text = placeInfo.clientLName;
                     txbInfoPhone.Text = placeInfo.phone.ToString();
+                    if (txbInfoPhone.Text.Length < 10)
+                    {
+                        for (int i = 0; i < 10-txbInfoPhone.Text.Length; i++)
+                        {
+                            txbInfoPhone.Text = txbInfoPhone.Text.Insert(0, "0");
+                        }
+                    }
                     txbInfoManufacture.Text = placeInfo.manufacture;
                     txbInfoModel.Text = placeInfo.model;
                     txbInfoColor.Text = placeInfo.color;
@@ -227,6 +222,7 @@ namespace ParkingWPF
             }
         }
         
+
 
         public bool CheckAllFieldsClickPlace()
         {
@@ -256,6 +252,7 @@ namespace ParkingWPF
         }
 
 
+
         private void btnAddCar_Click(object sender, RoutedEventArgs e)
         {
             AddCar AddCar = new AddCar();
@@ -272,6 +269,7 @@ namespace ParkingWPF
             addClient.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             addClient.ShowDialog();
         }
+
 
 
         private void btnSelectCar_Click(object sender, RoutedEventArgs e)
@@ -347,11 +345,19 @@ namespace ParkingWPF
         {
             using (ParkingContext db = new ParkingContext())
             {
-                db.BalanceParking.Add(new BalanceParking { ClientId = IdClient, CarId = IdCar, DataAdded = DateTime.Parse(txbInfoDate.Text), Place = (int)SenderPlace });
-                db.HistoryAddedCars.Add(new HistoryAddedCars { ClientId = IdClient, CarId = IdCar, DataAdded = DateTime.Parse(txbInfoDate.Text), Place = (int)SenderPlace });
-                db.SaveChanges();
-                SetColor.SetColorForPlaces((List<Button>)this.Owner.Tag);
-                this.Close();
+                var tempCar = db.Cars.Where(c => c.NumberCar == txbInfoNumber.Text).FirstOrDefault();
+                int tempNum = Int32.Parse(txbInfoPhone.Text);
+                var tempClient = db.Clients.Where(c => c.Phone == tempNum).FirstOrDefault();
+                BalanceParking temPlace = new BalanceParking { ClientId = tempClient.Id, CarId = tempCar.Id, DataAdded = DateTime.Parse(txbInfoDate.Text), Place = (int)SenderPlace };
+                var isExistPlace = db.BalanceParking.Where(pl => pl.CarId == temPlace.CarId).FirstOrDefault();
+                if (isExistPlace == null)
+                {
+                    db.BalanceParking.Add(temPlace);
+                    db.HistoryAddedCars.Add(new HistoryAddedCars { ClientId = tempClient.Id, CarId = tempCar.Id, DataAdded = DateTime.Parse(txbInfoDate.Text), Place = (int)SenderPlace });
+                    db.SaveChanges();
+                    SetColor.SetColorForPlaces((List<Button>)(this.Owner as MainWindow).ListButtons);
+                    this.Close();
+                }
             }
         }
 

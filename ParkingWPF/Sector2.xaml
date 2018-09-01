@@ -5,8 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ParkingWPF"
         mc:Ignorable="d"
-        Title="Sector2" Height="300" Width="300">
+         Title="Sector1" Height="550" Width="580" Closing="Window_Closing">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Name="btnPlace22" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="1" Name="btnPlace23" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="2" Name="btnPlace24" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="3" Name="btnPlace25" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="4" Name="btnPlace26" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="5" Name="btnPlace27" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="6" Name="btnPlace28" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="7" Name="btnPlace29" Click="btnPlace_Click"></Button>
+            <!--<Button Grid.Column="8" Name="btnPlace30" Click="btnPlace_Click"></Button>-->
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Name="btnPlace38" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="1" Name="btnPlace39" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="2" Name="btnPlace40" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="3" Name="btnPlace41" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="4" Name="btnPlace42" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="5" Name="btnPlace43" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="6" Name="btnPlace44" Click="btnPlace_Click" HorizontalAlignment="Left" Width="72"></Button>
+            <Button Grid.Column="7" Name="btnPlace45" Click="btnPlace_Click"></Button>
+            <!--<Button Grid.Column="8" Name="btnPlace46" Click="btnPlace_Click"></Button>-->
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Name="btnPlace37" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="1" Name="btnPlace36" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="2" Name="btnPlace35" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="3" Name="btnPlace34" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="4" Name="btnPlace33" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="5" Name="btnPlace32" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="6" Name="btnPlace31" Click="btnPlace_Click"></Button>
+            <Button Grid.Column="7" Name="btnPlace30" Click="btnPlace_Click"></Button>
+            <!--<Button Grid.Column="8" Name="btnPlace" Click="btnPlace_Click"></Button>-->
+        </Grid>
+
     </Grid>
 </Window>
