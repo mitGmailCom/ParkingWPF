@@ -10,6 +10,14 @@ namespace ParkingWPF
 {
     public static class CheckFieldsByType
     {
+        /// <summary>
+        /// Check which collection contains the item
+        /// </summary>
+        /// <param name="ListOfIntType"></param>
+        /// <param name="ListOfDateType"></param>
+        /// <param name="ListOfStringType"></param>
+        /// <param name="depObj - the item to find"></param>
+        /// <returns></returns>
         public static bool CheckFieldsByTypeMethod(List<string> ListOfIntType, List<string> ListOfDateType, List<string> ListOfStringType, DependencyObject depObj)
         {
             bool result = false;

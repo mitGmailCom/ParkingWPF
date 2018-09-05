@@ -11,6 +11,12 @@ namespace ParkingWPF
 {
     public static class ClickOnPlace
     {
+        /// <summary>
+        /// Create and show window ClickPlace type
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="depObj - owner for window"></param>
         public static void ClickOnAnyPlace(object sender, RoutedEventArgs e, MainWindow depObj)
         {
             DefaultSettingsForButtons(depObj);
@@ -21,6 +27,10 @@ namespace ParkingWPF
             clickPlace.ShowDialog();
         }
 
+        /// <summary>
+        /// Set default settings
+        /// </summary>
+        /// <param name="depObj"></param>
         public static void DefaultSettingsForButtons(MainWindow depObj)
         {
             depObj.ListButtons.ForEach(it => it.BorderBrush = Brushes.Black);

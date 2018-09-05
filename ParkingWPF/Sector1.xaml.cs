@@ -37,19 +37,6 @@ namespace ParkingWPF
         }
 
 
-        // Delete
-        //private void Window_LostFocus(object sender, RoutedEventArgs e)
-        //{
-        //    (this.Owner as MainWindow).ListButtons.ForEach(it => it.BorderBrush = null);
-        //    (this.Owner as MainWindow).ListButtons.ForEach(it => it.BorderThickness = new Thickness(0.5));
-        //}
-
-        //private void Window_MouseUp(object sender, MouseButtonEventArgs e)
-        //{
-        //    (this.Owner as MainWindow).ListButtons.ForEach(it => it.BorderBrush = Brushes.Black);
-        //    (this.Owner as MainWindow).ListButtons.ForEach(it => it.BorderThickness = new Thickness(0.5));
-        //}
-
         /// <summary>
         /// Event for closing window Sector1
         /// </summary>

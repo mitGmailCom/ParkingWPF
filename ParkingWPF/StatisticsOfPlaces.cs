@@ -8,16 +8,19 @@ namespace ParkingWPF
 {
     public static class StatisticsOfPlaces
     {
-        public static List<int> ListPlaces = new List<int>();
-        public static int PlaceNotFreeSector1 { get; set; }
-        public static int PlaceNotFreeSector2 { get; set; }
-        public static int PlaceNotFreeSector3 { get; set; }
-        public static int PlaceSector1 { get; set; } = 21;
-        public static int PlaceSector2 { get; set; } = 24;
-        public static int PlaceSector3 { get; set; } = 21;
+        public static List<int> ListPlaces = new List<int>(); // List of places
+        public static int PlaceNotFreeSector1 { get; set; } // number of not free places in sector1
+        public static int PlaceNotFreeSector2 { get; set; } // number of not free places in sector2
+        public static int PlaceNotFreeSector3 { get; set; } // number of not free places in sector3
+        public static int PlaceSector1 { get; set; } = 21; // number of places in sector1
+        public static int PlaceSector2 { get; set; } = 24; // number of places in sector2
+        public static int PlaceSector3 { get; set; } = 21; // number of places in sector3
         private static MainWindow copyMainWindow = new MainWindow();
 
 
+        /// <summary>
+        /// Calculate the number of free places in each sectors
+        /// </summary>
         public static void StatisticOfPlacesLoad()
         {
             using (ParkingContext db = new ParkingContext())
@@ -37,6 +40,11 @@ namespace ParkingWPF
             }
         }
 
+        /// <summary>
+        /// Update data in each sector
+        /// </summary>
+        /// <param name="place - place with which some actions were carried out"></param>
+        /// <param name="symb - sign for adding or subtracting space"></param>
         public static void UpdateStatisticsPlaces(int place, char symb)
         {
             if (symb == '+')
@@ -63,7 +71,10 @@ namespace ParkingWPF
             }
         }
 
-
+        /// <summary>
+        /// Show data about places in each sector
+        /// </summary>
+        /// <param name="mainWind"></param>
         public static void ShowStatisticsInMainWind(MainWindow mainWind)
         {
             if (copyMainWindow.Tag == null)
@@ -73,6 +84,10 @@ namespace ParkingWPF
                 copyMainWindow.Tag = 1;
         }
 
+
+        /// <summary>
+        /// Insert data about places in TexBoxes
+        /// </summary>
         public static void ShowStatisticsInMainWind()
         {
             copyMainWindow.txBlNotFreePlacesSector1.Text = StatisticsOfPlaces.PlaceNotFreeSector1.ToString();

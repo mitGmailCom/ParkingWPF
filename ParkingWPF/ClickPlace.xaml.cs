@@ -28,107 +28,11 @@ namespace ParkingWPF
             InitializeComponent();
             Loaded += ClickPlace_Loaded;
         }
-        //public string PlaceInClickPlace
-        //{
-        //    get
-        //    {
-        //        return this.txbInfoPlace.Text;
-        //    }
-        //    set
-        //    {
-        //        txbInfoPlace.Text = value;
-        //    }
-        //}
-        //public string LastNameInClickPlace
-        //{
-        //    get
-        //    {
-        //        return this.txbInfoClientLastName.Text;
-        //    }
-        //    set
-        //    {
-        //        txbInfoClientLastName.Text = value;
-        //    }
-        //}
-        //public string FirstNameInClickPlace
-        //{
-        //    get
-        //    {
-        //        return this.txbInfoClientFirstName.Text;
-        //    }
-        //    set
-        //    {
-        //        txbInfoClientFirstName.Text = value;
-        //    }
-        //}
-        //public string PhoneInClickPlace
-        //{
-        //    get
-        //    {
-        //        return this.txbInfoPhone.Text;
-        //    }
-        //    set
-        //    {
-        //        txbInfoPhone.Text = value;
-        //    }
-        //}
-        //public string ManufactureInClickPlace
-        //{
-        //    get
-        //    {
-        //        return this.txbInfoManufacture.Text;
-        //    }
-        //    set
-        //    {
-        //        txbInfoManufacture.Text = value;
-        //    }
-        //}
-        //public string ModelInClickPlace
-        //{
-        //    get
-        //    {
-        //        return this.txbInfoModel.Text;
-        //    }
-        //    set
-        //    {
-        //        txbInfoModel.Text = value;
-        //    }
-        //}
-        //public string ColorCarInClickPlace
-        //{
-        //    get
-        //    {
-        //        return this.txbInfoColor.Text;
-        //    }
-        //    set
-        //    {
-        //        txbInfoColor.Text = value;
-        //    }
-        //}
-        //public string NumberCarInClickPlace
-        //{
-        //    get
-        //    {
-        //        return this.txbInfoNumber.Text;
-        //    }
-        //    set
-        //    {
-        //        txbInfoNumber.Text = value;
-        //    }
-        //}
-        //public string DateAddInClickPlace
-        //{
-        //    get
-        //    {
-        //        return this.txbInfoDate.Text;
-        //    }
-        //    set
-        //    {
-        //        txbInfoDate.Text = value;
-        //    }
-        //}
+        
 
-
+        /// <summary>
+        /// Disable all buttons on ClickPlace window
+        /// </summary>
         private void ClearValuesInBtn()
         {
             btnAddCar.IsEnabled = false;
@@ -141,6 +45,9 @@ namespace ParkingWPF
             btnSaveToPlace.IsEnabled = false;
         }
 
+        /// <summary>
+        /// Disable buttons in case Checked Car
+        /// </summary>
         private void CaseCheckedCar()
         {
             btnAddCar.IsEnabled = false;
@@ -153,6 +60,9 @@ namespace ParkingWPF
             btnSaveToPlace.IsEnabled = false;
         }
 
+        /// <summary>
+        /// Disable buttons in case Checked Cient
+        /// </summary>
         private void CaseNotCheckedCar()
         {
             btnAddCar.IsEnabled = true;
@@ -176,6 +86,9 @@ namespace ParkingWPF
         }
 
 
+        /// <summary>
+        /// Initial loading of data into the window ClickPlace
+        /// </summary>
         private void LoadDataToClickPlace()
         {
             using (ParkingContext db = new ParkingContext())
@@ -194,6 +107,7 @@ namespace ParkingWPF
                         date = pl.DataAdded
                     }).FirstOrDefault();
 
+                // case, that no data in placeInfo
                 if (placeInfo != null)
                 {
                     txbInfoPlace.Text = placeInfo.place.ToString();
@@ -223,9 +137,13 @@ namespace ParkingWPF
         }
         
 
-
+        /// <summary>
+        /// Check all Texboxes
+        /// </summary>
+        /// <returns></returns>
         public bool CheckAllFieldsClickPlace()
         {
+            // ToDo
             bool res = false;
             if (txbInfoPlace.Text == null || txbInfoPlace.Text == string.Empty)
                 res = false;
@@ -271,7 +189,6 @@ namespace ParkingWPF
         }
 
 
-
         private void btnSelectCar_Click(object sender, RoutedEventArgs e)
         {
             SelectCar selectCar = new SelectCar();
@@ -290,7 +207,11 @@ namespace ParkingWPF
         }
 
 
-
+        /// <summary>
+        /// Take the car out off the parking place
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMoveFromPlace_Click(object sender, RoutedEventArgs e)
         {
             if (CheckAllFieldsClickPlace())
@@ -329,7 +250,7 @@ namespace ParkingWPF
 
 
         /// <summary>
-        /// Add Car with Client to Parking
+        /// Add info about Client and Car to Parking
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -344,6 +265,9 @@ namespace ParkingWPF
         }
 
 
+        /// <summary>
+        /// The method of adding  info about Client and Car to Parking
+        /// </summary>
         private void AddToBalanceParking()
         {
             using (ParkingContext db = new ParkingContext())

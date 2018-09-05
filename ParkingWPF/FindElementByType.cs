@@ -10,6 +10,12 @@ namespace ParkingWPF
 {
     public static class FindElementByType
     {
+        /// <summary>
+        /// Find elements on DependencyObject
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="depObj"></param>
+        /// <returns></returns>
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
             if (depObj != null)

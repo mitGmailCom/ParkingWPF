@@ -10,6 +10,10 @@ namespace ParkingWPF
 {
     public static class SetColor
     {
+        /// <summary>
+        /// Set color shceme for buttons
+        /// </summary>
+        /// <param name="ListButtons - list with Buttons"></param>
         public static void SetColorForPlaces(List<Button> ListButtons)
         {
             List<int> Places = new List<int>();

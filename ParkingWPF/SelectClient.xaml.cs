@@ -35,6 +35,7 @@ namespace ParkingWPF
             }
         }
 
+        // Insert data abot Client in ClickPlace window
         private void DataGridClients_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (sender is DataGrid)

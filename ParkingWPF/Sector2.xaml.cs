@@ -36,6 +36,7 @@ namespace ParkingWPF
             ClickOnPlace.ClickOnAnyPlace(sender, e, tempMainWind);
         }
 
+
         /// <summary>
         /// Event for closing window Sector1
         /// </summary>

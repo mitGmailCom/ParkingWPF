@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,12 +42,27 @@ public partial class MainWindow : Window
             Loaded += MainWindow_Loaded;
         }
 
+
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             ListButtons = new List<Button>();
             ListPlaces = new List<int>();
-            StatisticsOfPlaces.StatisticOfPlacesLoad();
-            StatisticsOfPlaces.ShowStatisticsInMainWind(this);
+
+            #region
+            SqlConnection connect = new SqlConnection();
+            try
+            {
+                connect.ConnectionString = "Data Source = X/SQLEXPRESS; Initial Catalog = ParkingWPF; Integrated Security = true";
+            }
+            catch (Exception)
+            {
+            }
+            if (connect != null)
+            {
+                StatisticsOfPlaces.StatisticOfPlacesLoad();
+                StatisticsOfPlaces.ShowStatisticsInMainWind(this);
+            }
+            #endregion
 
             RegisterWindForSectors();
             AddBtnToList();
@@ -108,30 +124,6 @@ public partial class MainWindow : Window
                     (ListButtons[i] as Button).Content = i + 1;
             }
         }
-
-
-        //private void SetColorPlace()
-        //{
-        //    List<int> Places = new List<int>();
-        //    using (ParkingContext db = new ParkingContext())
-        //    {
-        //        Places = db.BalanceParking.Select(pl => pl.Place).ToList();
-        //        List<int> tt = new List<int>();
-        //        for (int i = 0; i < ListButtons.Count; i++)
-        //        {
-        //            tt.Add(Int32.Parse(ListButtons[i].Content.ToString()));
-        //        }
-        //        IEnumerable<int> unique1 = tt.Except(Places);
-        //        foreach (int item in unique1)
-        //        {
-        //            ListButtons[item - 1].Background = Brushes.White;
-        //        }
-        //        foreach (int item in Places)
-        //        {
-        //            ListButtons[item - 1].Background = Brushes.Red;
-        //        }
-        //    }
-        //}
 
 
         /// <summary>
@@ -312,6 +304,12 @@ public partial class MainWindow : Window
             return false;
         }
 
+
+        /// <summary>
+        /// Event on Click button AddClient(adding a car)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddCar_Click(object sender, RoutedEventArgs e)
         {
             AddCar AddCar = new AddCar();
@@ -320,6 +318,12 @@ public partial class MainWindow : Window
             AddCar.ShowDialog();
         }
 
+
+        /// <summary>
+        /// Event on Click button AddCar(adding a client)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddClient_Click(object sender, RoutedEventArgs e)
         {
             AddClient addClient = new AddClient();

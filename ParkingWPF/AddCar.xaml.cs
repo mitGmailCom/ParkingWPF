@@ -19,15 +19,16 @@ namespace ParkingWPF
     /// </summary>
     public partial class AddCar : Window
     {
-        public List<string> ListOfStringType;
-        public List<string> ListOfIntType;
-        public List<string> ListOfDateType;
+        public List<string> ListOfStringType; // List for save string's type
+        public List<string> ListOfIntType; // List for save int's type
+        public List<string> ListOfDateType; // List for save dateType's type
 
         public AddCar()
         {
             InitializeComponent();
             Loaded += AddCar_Loaded;
         }
+
 
         private void AddCar_Loaded(object sender, RoutedEventArgs e)
         {
@@ -37,6 +38,56 @@ namespace ParkingWPF
         }
 
 
+        // Cancel process on adding
+        private void btnCancelAddingCar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+
+        // Click on AddCar
+        private void btnAddCar_Click(object sender, RoutedEventArgs e)
+        {
+            if (AddCarInGeneral())
+            {
+                if (this.Owner is ClickPlace)
+                {
+                    AddDataToClickPlace();
+                    if ((this.Owner as ClickPlace).CheckAllFieldsClickPlace())
+                        (this.Owner as ClickPlace).btnSaveToPlace.IsEnabled = true;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Check on adding to DataBase
+        /// </summary>
+        /// <returns></returns>
+        private bool AddCarInGeneral()
+        {
+            // check for input
+            if (txbAddManufacture.Text == null || txbAddModel.Text == null || txbAddColorCar.Text == null || txbAddNumberCar == null ||
+                txbAddManufacture.Text == string.Empty || txbAddModel.Text == string.Empty || txbAddColorCar.Text == string.Empty || txbAddNumberCar.Text == string.Empty)
+            {
+                MessageBox.Show("Please input values into all fields!", "Error");
+                SetFocusToTextBox();
+                CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this);
+                return false;
+            }
+            else
+            {
+                //SetFocusToTextBox();
+                if (CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this))
+                    AddCarToDB();
+                return true;
+            }
+        }
+
+
+        /// <summary>
+        /// Add Car toDatabase
+        /// </summary>
         private void AddCarToDB()
         {
             Car newCar = new Car();
@@ -58,6 +109,21 @@ namespace ParkingWPF
         }
 
 
+        /// <summary>
+        /// Adding data about Car to TextBoxes
+        /// </summary>
+        private void AddDataToClickPlace()
+        {
+            (this.Owner as ClickPlace).txbInfoManufacture.Text = this.txbAddManufacture.Text;
+            (this.Owner as ClickPlace).txbInfoModel.Text = this.txbAddModel.Text;
+            (this.Owner as ClickPlace).txbInfoColor.Text = this.txbAddColorCar.Text;
+            (this.Owner as ClickPlace).txbInfoNumber.Text = this.txbAddNumberCar.Text;
+        }
+
+
+        /// <summary>
+        /// Set focus on textBox
+        /// </summary>
         private void SetFocusToTextBox()
         {
             var list = FindElementByType.FindVisualChildren<TextBox>(this);
@@ -72,101 +138,5 @@ namespace ParkingWPF
             }
         }
 
-
-        //internal bool CheckFieldsByType()
-        //{
-        //    bool result = false;
-        //    var list = FindElementByType.FindVisualChildren<TextBox>(this);
-        //    int tempNumberCar = 0;
-        //    DateTime tempDate;
-        //    foreach (TextBox item in list)
-        //    {
-        //        var res = ListOfIntType.Where(e => e == item.Name).FirstOrDefault();
-        //        if (res != null)
-        //        {
-        //            bool isNumber = Int32.TryParse(res, out tempNumberCar);
-        //            if (isNumber)
-        //                result = true;
-        //            else
-        //            {
-        //                result = false;
-        //                break;
-        //            }
-        //        }
-        //        res = ListOfDateType.Where(e => e == item.Name).FirstOrDefault();
-        //        if (res != null)
-        //        {
-        //            bool isDate = DateTime.TryParse(res, out tempDate);
-        //            if (isDate)
-        //                result = true;
-        //            else
-        //            {
-        //                result = false;
-        //                break;
-        //            }
-        //        }
-        //        res = ListOfStringType.Where(e => e == item.Name).FirstOrDefault();
-        //        if (res != null)
-        //            result = true;
-        //    }
-        //    return result;
-        //}
-
-
-
-        private void btnCancelAddingCar_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-
-
-        /// <summary>
-        /// Add object Car to Datebase
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnAddCar_Click(object sender, RoutedEventArgs e)
-        {
-            if (AddCarInGeneral())
-            {
-                if (this.Owner is ClickPlace)
-                {
-                    AddDataToClickPlace();
-                    if ((this.Owner as ClickPlace).CheckAllFieldsClickPlace())
-                        (this.Owner as ClickPlace).btnSaveToPlace.IsEnabled = true;
-                }
-            }
-        }
-
-
-        private bool AddCarInGeneral()
-        {
-            // проверка на ввод
-            if (txbAddManufacture.Text == null || txbAddModel.Text == null || txbAddColorCar.Text == null || txbAddNumberCar == null ||
-                txbAddManufacture.Text == string.Empty || txbAddModel.Text == string.Empty || txbAddColorCar.Text == string.Empty || txbAddNumberCar.Text == string.Empty)
-            {
-                MessageBox.Show("Please input values into all fields!", "Error");
-                SetFocusToTextBox();
-                CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this);
-                return false;
-            }
-            else
-            {
-                //SetFocusToTextBox();
-                if (CheckFieldsByType.CheckFieldsByTypeMethod(ListOfIntType, ListOfDateType, ListOfStringType, this))
-                    AddCarToDB();
-                return true;
-            }
-        }
-
-
-        private void AddDataToClickPlace()
-        {
-            (this.Owner as ClickPlace).txbInfoManufacture.Text = this.txbAddManufacture.Text;
-            (this.Owner as ClickPlace).txbInfoModel.Text = this.txbAddModel.Text;
-            (this.Owner as ClickPlace).txbInfoColor.Text = this.txbAddColorCar.Text;
-            (this.Owner as ClickPlace).txbInfoNumber.Text = this.txbAddNumberCar.Text;
-        }
     }
 }

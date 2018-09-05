@@ -29,12 +29,12 @@ namespace ParkingWPF
         {
             using (ParkingContext db = new ParkingContext())
             {
-                //var ListCars = db.Cars.Select(i => new { Manufacture = i.Manufacture, Model = i.Model, Number = i.NumberCar, Id = i.Id }).ToList();
                 var ListCars = db.Cars.OrderBy(c => c.Manufacture).ToList();
                 DataGridCars.ItemsSource = ListCars;
             }
         }
 
+        //  // Insert data abot Car in ClickPlace window
         private void DataGridCars_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (sender is DataGrid)

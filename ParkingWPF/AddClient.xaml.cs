@@ -19,9 +19,10 @@ namespace ParkingWPF
     /// </summary>
     public partial class AddClient : Window
     {
-        public List<string> ListOfStringType;
-        public List<string> ListOfIntType;
-        public List<string> ListOfDateType;
+        public List<string> ListOfStringType; // List for save string's type
+        public List<string> ListOfIntType; // List for save int's type
+        public List<string> ListOfDateType; // List for save dateType's type
+
 
         public AddClient()
         {
@@ -36,6 +37,10 @@ namespace ParkingWPF
             ListOfDateType = new List<string>();
         }
 
+
+        /// <summary>
+        /// Add Car toDatabase
+        /// </summary>
         private void AddClientToDB()
         {
             Client newClient = new Client();
@@ -58,6 +63,9 @@ namespace ParkingWPF
         }
 
 
+        /// <summary>
+        /// Set focus on textBox
+        /// </summary>
         private void SetFocusToTextBox()
         {
             var list = FindElementByType.FindVisualChildren<TextBox>(this);
@@ -73,6 +81,9 @@ namespace ParkingWPF
         }
 
 
+        /// <summary>
+        /// Adding data about Car to TextBoxes
+        /// </summary>
         private void AddDataToClickPlace()
         {
             (this.Owner as ClickPlace).txbInfoClientLastName.Text = this.txbAddClientLastName.Text;
@@ -81,6 +92,10 @@ namespace ParkingWPF
         }
 
 
+        /// <summary>
+        /// Check on adding to DataBase
+        /// </summary>
+        /// <returns></returns>
         private bool AddClientInGeneral()
         {
             // проверка на ввод
@@ -103,7 +118,7 @@ namespace ParkingWPF
         }
 
 
-
+        // Click on AddCar
         private void btnAddClient_Click(object sender, RoutedEventArgs e)
         {
             if (AddClientInGeneral())
@@ -119,7 +134,7 @@ namespace ParkingWPF
         }
 
 
-
+        // Cancel process on adding
         private void btnCancelAddingClient_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
